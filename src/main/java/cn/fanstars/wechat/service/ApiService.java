@@ -10,6 +10,8 @@ import java.io.IOException;
 
 public interface ApiService {
 
+    ApiResponse accessToken(String token) throws WxErrorException;
+
     ResponseEntity<byte[]> qrcode(HttpServletResponse response) throws IOException, WriterException, WxErrorException;
 
     ApiResponse wechatUser(String token, String code);

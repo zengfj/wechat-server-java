@@ -39,6 +39,15 @@ public class ApiServiceImpl implements ApiService {
     private final WxMpService wxMpService;
 
     @Override
+    public ApiResponse accessToken(String token) throws WxErrorException {
+        if (!verifyToken(token)) {
+            return ApiResponse.error("令牌验证失败");
+        }
+        return ApiResponse.success(wxMpService.getAccessToken())
+                ;
+    }
+
+    @Override
     public ResponseEntity<byte[]> qrcode(HttpServletResponse response) throws IOException, WriterException, WxErrorException {
         WxMpQrcodeService qrcodeService = wxMpService.getQrcodeService();
         WxMpQrCodeTicket wxMpQrCodeTicket = qrcodeService.qrCodeCreateTmpTicket(apiConfig.getQrcodeSceneId(),

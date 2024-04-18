@@ -23,6 +23,15 @@ public class ApiController {
 
     private final ApiService apiService;
 
+    @GetMapping("/access_token")
+    public ApiResponse accessToken(@RequestHeader("authorization") String token,
+                                   @RequestHeader("Authorization") String aToken) throws WxErrorException {
+        if (token == null) {
+            token = aToken;
+        }
+        return apiService.accessToken(token);
+    }
+
     @GetMapping("/qrcode")
     public ResponseEntity<byte[]> qrcode(HttpServletResponse response) throws IOException, WriterException, WxErrorException {
         return apiService.qrcode(response);
