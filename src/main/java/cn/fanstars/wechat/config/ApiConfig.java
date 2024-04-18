@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Map;
+
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "api")
@@ -49,5 +51,9 @@ public class ApiConfig {
      * 二维码过期时间，以秒为单位
      */
     private Integer qrcodeExpireTime = 300;
+    /**
+     * 自定义回复
+     */
+    private Map<String, String> customReplyMap;
 
 }

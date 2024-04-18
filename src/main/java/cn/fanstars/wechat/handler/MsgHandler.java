@@ -36,6 +36,12 @@ public class MsgHandler extends AbstractHandler {
             return new TextBuilder().fromUser(wxMessage.getToUser()).toUser(wxMessage.getFromUser())
                     .content(codeText).build();
         }
+        // 添加自定义回复
+        Map<String, String> customReplyMap = apiConfig.getCustomReplyMap();
+        if (customReplyMap != null && customReplyMap.containsKey(content)) {
+            return new TextBuilder().fromUser(wxMessage.getToUser()).toUser(wxMessage.getFromUser())
+                    .content(customReplyMap.get(content)).build();
+        }
         return null;
     }
 

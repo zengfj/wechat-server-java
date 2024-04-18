@@ -9,7 +9,7 @@
 
 ## 功能
 + [x] 登录验证
-+ [ ] 自定义回复
++ [x] 自定义回复
 
 ## 展示
 [FanStars API](https://api.fanstars.cn) 的微信登录就是基于本项目构建的, 欢迎前去体验。
@@ -36,6 +36,10 @@ api:
   margin: 1   # 边距
   qrcode-scene-id: 1008   # 二维码场景ID
   qrcode-expire-time: 600 # 二维码过期时间，以秒为单位
+  custom-reply-map:       # 自定义回复键值对
+    lol: "英雄联盟"
+    cf: "窜越火线"
+    dnf: "地下城与勇士"
 ```
 
 ## API

@@ -18,3 +18,7 @@ api:
   margin: 1
   qrcode-scene-id: 1008
   qrcode-expire-time: 600
+  custom-reply-map:
+    lol: "英雄联盟"
+    cf: "窜越火线"
+    dnf: "地下城与勇士"
