@@ -1,0 +1,17 @@
+server:
+  port: 8088
+
+wx:
+  mp:
+    appId: xxxxxxxxxx
+    secret: xxxxxxxxxx
+    token: xxxxxxxxxx
+    aesKey: xxxxxxxxxx
+api:
+  token: xxxxxxxxxx
+  code-length: 6
+  width: 300
+  height: 300
+  margin: 1
+  qrcode-scene-id: 1008
+  qrcode-expire-time: 600
