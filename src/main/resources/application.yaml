@@ -9,6 +9,8 @@ wx:
     aesKey: xxxxxxxxxx
 api:
   token: xxxxxxxxxx
+  send-code-keyword: 验证码
+  code-template: "您正在登录 FanStars API, 验证码是: ${code}"
   code-length: 6
   width: 300
   height: 300

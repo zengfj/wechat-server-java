@@ -1,5 +1,6 @@
 package cn.fanstars.wechat.handler;
 
+import cn.fanstars.wechat.config.ApiConfig;
 import cn.fanstars.wechat.util.ApiCodeUtil;
 import com.alibaba.fastjson.JSON;
 import lombok.AllArgsConstructor;
@@ -19,6 +20,8 @@ import java.util.Map;
 @AllArgsConstructor
 public class MsgHandler extends AbstractHandler {
 
+    private final ApiConfig apiConfig;
+
     @Override
     public WxMpXmlOutMessage handle(WxMpXmlMessage wxMessage,
                                     Map<String, Object> context, WxMpService wxMpService,
@@ -28,10 +31,10 @@ public class MsgHandler extends AbstractHandler {
         if (!StringUtils.hasLength(content)) {
             content = "";
         }
-        if (content.equals("验证码")) {
-            String code = ApiCodeUtil.generateCode(wxMessage.getFromUser());
+        if (content.equals(apiConfig.getSendCodeKeyword())) {
+            String codeText = ApiCodeUtil.getCodeText(wxMessage.getFromUser());
             return new TextBuilder().fromUser(wxMessage.getToUser()).toUser(wxMessage.getFromUser())
-                    .content("您的验证码是: " + code).build();
+                    .content(codeText).build();
         }
         return null;
     }

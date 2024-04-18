@@ -27,9 +27,9 @@ public class ScanHandler extends AbstractHandler {
         // 扫码事件处理
         log.info("接收到请求消息，内容：{}", JSON.toJSONString(wxMessage));
         if (wxMessage.getEventKey().equals(apiConfig.getQrcodeSceneId())) {
-            String code = ApiCodeUtil.generateCode(wxMessage.getFromUser());
+            String codeText = ApiCodeUtil.getCodeText(wxMessage.getFromUser());
             return new TextBuilder().fromUser(wxMessage.getToUser()).toUser(wxMessage.getFromUser())
-                    .content("您的验证码是: " + code).build();
+                    .content(codeText).build();
         }
         return null;
     }

@@ -14,9 +14,17 @@ public class ApiConfig {
      */
     private String token;
     /**
+     * 发送code关键字
+     */
+    private String sendCodeKeyword = "验证码";
+    /**
      * 验证码长度
      */
     private Integer codeLength = 6;
+    /**
+     * 发送验证码的模板
+     */
+    private String codeTemplate = "${code}";
     /**
      * 验证码过期时间，以毫秒为单位
      */

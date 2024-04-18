@@ -47,6 +47,18 @@ public class ApiCodeUtil implements ApplicationContextAware {
 
     private static final int verificationMapMaxSize = 20;
 
+    public static String getCodeText(String openId) {
+        String code = ApiCodeUtil.generateCode(openId);
+        String codeTemplate = apiConfig.getCodeTemplate();
+        String codeText;
+        if (codeTemplate.contains("${code}")) {
+            codeText = codeTemplate.replace("${code}", code);
+        } else {
+            codeText = codeTemplate + code;
+        }
+        return codeText;
+    }
+
     public static synchronized String generateCode(String openId) {
         String code = getRandomCode(apiConfig.getCodeLength());
         while (verificationMap.containsKey(code)) {
