@@ -8,6 +8,7 @@
 > 本项目目前没有前端页面，靠配置文件进行配置。
 
 ## 功能
++ [x] Access Token 自动刷新 & 提供外部访问接口
 + [x] 登录验证
 + [x] 自定义回复
 
@@ -15,6 +16,7 @@
 [FanStars API](https://api.fanstars.cn) 的微信登录就是基于本项目构建的, 欢迎前去体验。
 
 ## 配置
+1. application.yaml
 ```yaml
 server:
   port: 8088 # 端口
@@ -41,6 +43,11 @@ api:
     cf: "窜越火线"
     dnf: "地下城与勇士"
 ```
+2. 前往[微信公众号配置页面 -> 设置与开发 -> 基本配置](https://mp.weixin.qq.com/)填写以下配置：
+    1. `URL` 填：`https://<your.domain>/api/mp/portal/<your.appid>`
+    2. `Token` 首先在我们的配置页面随便填写一个 Token，然后在微信公众号的配置页面填入同一个 Token 即可。
+    3. `EncodingAESKey` 点随机生成，然后在我们的配置页面填入该值。
+    4. 消息加解密方式都可以选择。
 
 ## API
 ### 获取 Access Token
