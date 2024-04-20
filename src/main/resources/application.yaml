@@ -29,3 +29,6 @@ api:
     lol: "英雄联盟"
     cf: "窜越火线"
     dnf: "地下城与勇士"
+
+log:
+  path: logs
