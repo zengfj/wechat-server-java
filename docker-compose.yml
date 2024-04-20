@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  redis:
+  wechat-server:
     image: fanstars1020/wechat-server:v1.1-alpha
     container_name: wechat-server
     ports:

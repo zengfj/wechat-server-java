@@ -15,6 +15,37 @@
 ## 展示
 [FanStars API](https://api.fanstars.cn) 的微信登录就是基于本项目构建的, 欢迎前去体验。
 
+## 部署
+### 基于Docker进行部署
+执行: `docker run -d --name wechat-server -p 3080:8080 -v ./logs:/fan/logs -v ./application.yaml:/fan/application.yaml --restart always fanstars1020/wechat-server:v1.1-alpha`
+在 ./application.yaml 中进行你的配置
+日志会保存在 ./logs 
+
+### 基于Docker-compose进行部署
+同样的要在 ./application.yaml 中进行你的配置
+```yaml
+version: '3'
+
+services:
+  wechat-server:
+    image: fanstars1020/wechat-server:v1.1-alpha
+    container_name: wechat-server
+    ports:
+      - 3080:8080
+    volumes:
+      - ./logs:/fan/logs
+      - ./application.yaml:/fan/application.yaml
+    restart: always
+    networks:
+      - default
+
+# Networks
+networks:
+  default:
+    driver: bridge
+    name: fan
+```
+
 ## 配置
 1. application.yaml
 ```yaml
@@ -27,6 +58,9 @@ wx:
     secret: xxxxxxxxxx # 公众号 AppSecret
     token: xxxxxxxxxx  # 公众号 消息token
     aesKey: xxxxxxxxxx # 公众号 消息aesKey
+    api-host: https://api.weixin.qq.com
+    open-host: https://open.weixin.qq.com
+    mp-host: https://mp.weixin.qq.com
 api:
   token: xxxxxxxxxx        # token, one-api/new-api 中要设置一样
   send-code-keyword: 验证码 # 发送code关键字
