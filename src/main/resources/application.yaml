@@ -1,5 +1,9 @@
 server:
-  port: 8088
+  port: 8080
+
+spring:
+  application:
+    name: wechat-server-java
 
 wx:
   mp:
@@ -7,6 +11,9 @@ wx:
     secret: xxxxxxxxxx
     token: xxxxxxxxxx
     aesKey: xxxxxxxxxx
+    api-host: https://api.weixin.qq.com
+    open-host: https://open.weixin.qq.com
+    mp-host: https://mp.weixin.qq.com
 api:
   token: xxxxxxxxxx
   send-code-keyword: 验证码

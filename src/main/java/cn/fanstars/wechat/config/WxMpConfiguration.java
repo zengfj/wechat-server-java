@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import me.chanjar.weixin.mp.api.WxMpMessageRouter;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.api.impl.WxMpServiceImpl;
+import me.chanjar.weixin.mp.config.WxMpHostConfig;
 import me.chanjar.weixin.mp.config.impl.WxMpDefaultConfigImpl;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -42,6 +43,12 @@ public class WxMpConfiguration {
         configStorage.setSecret(wxMpProperties.getSecret());
         configStorage.setToken(wxMpProperties.getToken());
         configStorage.setAesKey(wxMpProperties.getAesKey());
+
+        WxMpHostConfig wxMpHostConfig = new WxMpHostConfig();
+        wxMpHostConfig.setApiHost(wxMpProperties.getApiHost());
+        wxMpHostConfig.setOpenHost(wxMpProperties.getOpenHost());
+        wxMpHostConfig.setMpHost(wxMpProperties.getMpHost());
+        configStorage.setHostConfig(wxMpHostConfig);
         WxMpService service = new WxMpServiceImpl();
         // 一个直接配置
         service.setWxMpConfigStorage(configStorage);
