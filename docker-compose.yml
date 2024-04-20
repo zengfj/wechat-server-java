@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  redis:
+    image: fanstars1020/wechat-server:v1.1-alpha
+    container_name: wechat-server
+    ports:
+      - 3080:8080
+    volumes:
+      - ./logs:/fan/logs
+      - ./application.yaml:/fan/application.yaml
+    restart: always
+    networks:
+      - default
+
+# Networks
+networks:
+  default:
+    driver: bridge
+    name: fan
